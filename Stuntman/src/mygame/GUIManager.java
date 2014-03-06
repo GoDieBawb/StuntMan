@@ -43,7 +43,7 @@ public class GUIManager extends AbstractAppState {
     createStartMenu();
     }
 
-      public void createStartMenu(){  
+  public void createStartMenu(){  
         screen = new Screen(app);
         app.getGuiNode().addControl(screen);
         startMenu = new Window(screen, "MainWindow", new Vector2f(15f, 15f));

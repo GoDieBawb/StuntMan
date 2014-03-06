@@ -30,6 +30,8 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     setUpKeys();
     }
   
+  //Sets up the keys
+  
   public void setUpKeys(){
     inputManager.addMapping("Up", new KeyTrigger(KeyInput.KEY_W));
     inputManager.addMapping("Down", new KeyTrigger(KeyInput.KEY_S));
@@ -40,6 +42,8 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     inputManager.addListener(this, "Left");
     inputManager.addListener(this, "Right");
     }
+  
+  //Listens for keys
 
   public void onAction(String binding, boolean isPressed, float tpf) {
     if (binding.equals("Up") ^ (binding.equals("Left"))){
@@ -48,6 +52,8 @@ public class InteractionManager extends AbstractAppState implements ActionListen
       down = isPressed;
       }
     }
+  
+  //Acts on the keys being listened for
   
   @Override
   public void update(float tpf){

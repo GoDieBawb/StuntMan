@@ -62,6 +62,8 @@ public class SceneManager extends AbstractAppState {
     textArray.add(key4);
     }
   
+  //Create the Floor
+  
   public void createFloor(){
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
     mat.setColor("Color", ColorRGBA.DarkGray);
@@ -73,6 +75,8 @@ public class SceneManager extends AbstractAppState {
     sceneModel.attachChild(floor);
     rootNode.attachChild(sceneModel);
     }
+  
+  //Create the wall on the right side
   
   public void createRightWall(){
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -90,6 +94,9 @@ public class SceneManager extends AbstractAppState {
     float distance = rand.nextInt(7) + 9; 
     wall.setLocalTranslation(-distance, 0f, -101f);
     }
+  
+  
+  //Create the wall on the left side
   
   public void createLeftWall(){
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -112,6 +119,9 @@ public class SceneManager extends AbstractAppState {
   public void update(float tpf){
   Player player = stateManager.getState(PlayerManager.class).currentPlayer;
   if (!player.isDead){
+      
+    //Getting the walls and moving them past the car, simulating movement
+      
     for(int i = 0; i < wallNode.getChildren().size(); i++){
       Geometry geom = (Geometry) wallNode.getChild(i);
       Random rand = new Random();
@@ -119,6 +129,10 @@ public class SceneManager extends AbstractAppState {
       Vector3f moveDir = new Vector3f(1f * shake, 0f, difficulty);
       geom.setLocalTranslation(geom.getLocalTranslation().addLocal(moveDir.mult(tpf)));
       int distance = (int) geom.getLocalTranslation().distance(player.model.getLocalTranslation().add(0f, 0f, -50f));
+      
+      
+      //If the distance is exactly 50 and there is less than for walls, create two more walls, BUGGED!!!!
+      
       if (distance == 50 && wallNode.getChildren().size() < 4) {
         if (lastWall){
           createRightWall();
@@ -133,9 +147,12 @@ public class SceneManager extends AbstractAppState {
           lastWall = true;
           }
         }
+      
+      //If greater than 120 remove the wall, allowing for new walls to be created
       if(distance > 120){
         geom.removeFromParent();
         }
+      
       }
     }
   }

@@ -49,7 +49,8 @@ public class CameraManager extends AbstractAppState {
     setUpTopCamera();
     }
     
-    
+    //Arcade mode camera
+  
   public void setUpTopCamera(){
     chaseCam = new ChaseCamera(cam, player.model, inputManager);
     chaseCam.setMinDistance(35);
@@ -58,6 +59,8 @@ public class CameraManager extends AbstractAppState {
     chaseCam.setDefaultVerticalRotation(-5);
     chaseCam.setUpVector(new Vector3f(0f, 1f, 0f));
     }
+  
+  //Chase Mode Camera
   
   public void setUpFollowCamera(){
     System.out.println(cam + " " + player + " " + inputManager);
