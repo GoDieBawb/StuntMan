@@ -42,7 +42,7 @@ public class PlayerManager extends AbstractAppState {
     player.score  = 0;
     Node ninja = (Node) assetManager.loadModel("Models/Ferrari/Car.scene");
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-    TextureKey key = new TextureKey("Models/Ferrari/Car.jpg");
+    TextureKey key = new TextureKey("Models/Ferrari/Car.jpg", false);
     Texture tex = assetManager.loadTexture(key);
     mat.setTexture("ColorMap", tex);
     ninja.setMaterial(mat);

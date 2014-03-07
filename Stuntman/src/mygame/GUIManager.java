@@ -46,6 +46,7 @@ public class GUIManager extends AbstractAppState {
   public void createStartMenu(){  
         screen = new Screen(app);
         app.getGuiNode().addControl(screen);
+        app.getInputManager().setSimulateMouse(true);
         startMenu = new Window(screen, "MainWindow", new Vector2f(15f, 15f));
         startMenu.setWindowTitle("Main Windows");
         startMenu.setMinDimensions(new Vector2f(130, 100));
@@ -60,11 +61,12 @@ public class GUIManager extends AbstractAppState {
          @Override
            public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
              chase = true;
-             startMenu.removeFromParent();
+             startMenu.hideWindow();
              stateManager.attach(new SceneManager());
              stateManager.attach(new PlayerManager());
              stateManager.attach(new CameraManager());
              stateManager.attach(new InteractionManager());
+             app.getInputManager().setCursorVisible(true);
              started = true;
             }  
           };
@@ -72,11 +74,12 @@ public class GUIManager extends AbstractAppState {
         ButtonAdapter arcadeButton = new ButtonAdapter( screen, "TopButton", new Vector2f(15, 15) ) {
          @Override
            public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
-             startMenu.removeFromParent();
+             startMenu.hideWindow();
              stateManager.attach(new PlayerManager());
              stateManager.attach(new SceneManager());
              stateManager.attach(new CameraManager());
              stateManager.attach(new InteractionManager());
+             app.getInputManager().setCursorVisible(true);
              started = true;
             }  
           };

@@ -29,7 +29,7 @@ public class CameraManager extends AbstractAppState {
 
   public    FlyByCamera            flyCam;
   public    ChaseCamera            chaseCam;
-  public    boolean                 chase;
+  public    boolean               chase;
   
   @Override
   public void initialize(AppStateManager stateManager, Application app) {
@@ -58,6 +58,7 @@ public class CameraManager extends AbstractAppState {
     chaseCam.setDefaultHorizontalRotation(0);
     chaseCam.setDefaultVerticalRotation(-5);
     chaseCam.setUpVector(new Vector3f(0f, 1f, 0f));
+    chaseCam.setDragToRotate(false);
     }
   
   //Chase Mode Camera
@@ -71,5 +72,6 @@ public class CameraManager extends AbstractAppState {
     chaseCam.setDefaultHorizontalRotation(1.6f);
     chaseCam.setDefaultVerticalRotation(0);
     chaseCam.setUpVector(new Vector3f(0f, 1f, 0f));
+    chaseCam.setDragToRotate(false);
     }
 }
