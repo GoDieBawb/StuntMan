@@ -7,16 +7,17 @@ import com.jme3.app.SimpleApplication;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
-
+    
     
     public static void main(String[] args) {
       Main app = new Main();
       app.start();
-      app.stateManager.attach(new GUIManager());
       }
 
     @Override
     public void simpleInitApp() {
-      
+    this.getStateManager().attach(new GUIManager());
+    this.setShowSettings(false);
+    this.setDisplayStatView(false);
     }
 }

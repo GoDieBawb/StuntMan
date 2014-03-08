@@ -13,7 +13,6 @@ import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
 import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.math.Vector2f;
-import org.lwjgl.opengl.Display;
 import tonegod.gui.controls.buttons.ButtonAdapter;
 import tonegod.gui.controls.windows.Window;
 import tonegod.gui.core.Screen;
@@ -60,8 +59,9 @@ public class GUIManager extends AbstractAppState {
         // create buttons
         ButtonAdapter chaseButton = new ButtonAdapter( screen, "ChaseButton", new Vector2f(15, 15) ) {
          @Override
-           public void onButtonMouseRightUp(MouseButtonEvent evt, boolean toggled) {
+           public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
              chase = true;
+             startMenu.removeFromParent();
              stateManager.attach(new SceneManager());
              stateManager.attach(new PlayerManager());
              stateManager.attach(new CameraManager());
@@ -74,10 +74,12 @@ public class GUIManager extends AbstractAppState {
 
         ButtonAdapter arcadeButton = new ButtonAdapter( screen, "TopButton", new Vector2f(15, 15) ) {
          @Override
-           public void onButtonMouseRightUp(MouseButtonEvent evt, boolean toggled) {
+           public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
+             chase = false;
              stateManager.attach(new PlayerManager());
              stateManager.attach(new SceneManager());
              stateManager.attach(new CameraManager());
+             startMenu.removeFromParent();
              stateManager.attach(new InteractionManager());
              app.getInputManager().setCursorVisible(true);
              startMenu.hideWindow();
@@ -92,7 +94,7 @@ public class GUIManager extends AbstractAppState {
         chaseButton.setText("Chase Mode");
         startMenu.addChild(chaseButton);
         screen.addElement(startMenu);
-        startMenu.setLocalTranslation(Display.getWidth() / 2 - startMenu.getWidth()/2, Display.getHeight() / 2 + startMenu.getHeight()/2, 0);
+        startMenu.setLocalTranslation(screen.getWidth() / 2 - startMenu.getWidth()/2, screen.getHeight() / 2 + startMenu.getHeight()/2, 0);
      }
     
   @Override

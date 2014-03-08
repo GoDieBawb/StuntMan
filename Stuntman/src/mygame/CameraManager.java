@@ -41,7 +41,6 @@ public class CameraManager extends AbstractAppState {
     this.flyCam        = this.stateManager.getState(FlyCamAppState.class).getCamera();
     this.chase         = this.stateManager.getState(GUIManager.class).chase;
     this.player        = this.stateManager.getState(PlayerManager.class).currentPlayer;
-    this.stateManager.detach(stateManager.getState(GUIManager.class));
     System.out.println("CameraManager Attached");
     flyCam.setEnabled(false);
     flyCam.setDragToRotate(false);

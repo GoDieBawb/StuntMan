@@ -142,7 +142,7 @@ public class SceneManager extends AbstractAppState {
       
       //If the distance is exactly 50 and there is less than for walls, create two more walls, BUGGED!!!!
       
-      if (distance == 50 && wallNode.getChildren().size() < 4) {
+      if (distance == 55 && wallNode.getChildren().size() < 4) {
         if (lastWall){
           createRightWall();
           player.score++;

@@ -14,7 +14,7 @@ import com.jme3.input.controls.MouseButtonTrigger;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
-import org.lwjgl.opengl.Display;
+import tonegod.gui.core.Screen;
 
 
 public class InteractionManager extends AbstractAppState implements ActionListener {
@@ -31,6 +31,7 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     this.app           = (SimpleApplication) app;
     this.stateManager  = this.app.getStateManager();
     this.inputManager  = this.app.getInputManager();
+    inputManager.setSimulateMouse(true);
     System.out.println("InteractionManager Attached");
     setUpKeys();
     }
@@ -63,20 +64,18 @@ public class InteractionManager extends AbstractAppState implements ActionListen
       Vector2f clickSpot = inputManager.getCursorPosition();
       float xSpot = clickSpot.getX();
       float ySpot = clickSpot.getY();
+      Screen screen = stateManager.getState(GUIManager.class).screen;
       
       
-      if (ySpot > Display.getHeight()/2 && xSpot > Display.getWidth()/2)
+      if (ySpot > screen.getHeight()/2 && xSpot > screen.getWidth()/2)
         up = isPressed;
       
-      else if (ySpot < Display.getHeight()/2 && xSpot < Display.getWidth()/2)
+      else if (ySpot < screen.getHeight()/2 && xSpot < screen.getWidth()/2)
         up = isPressed;
       
       else
        down = isPressed;
       
-      
-      System.out.println(ySpot + " " + xSpot);
-      System.out.println(Display.getHeight()/2 + " " + Display.getWidth()/2);
       }
     }
   
@@ -97,6 +96,7 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     stateManager.detach(stateManager.getState(PlayerManager.class));
     stateManager.detach(stateManager.getState(SceneManager.class));
     stateManager.detach(stateManager.getState(InteractionManager.class));
+    stateManager.detach(stateManager.getState(GUIManager.class));
     stateManager.attach(new GUIManager());
     System.out.println("you died");
     }
