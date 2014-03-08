@@ -44,9 +44,10 @@ public class GUIManager extends AbstractAppState {
     }
 
   public void createStartMenu(){  
-        screen = new Screen(app);
+        screen = new Screen(app, "tonegod/gui/style/atlasdef/style_map.gui.xml");
+        screen.setUseTextureAtlas(true,"tonegod/gui/style/atlasdef/atlas.png");
+        screen.setUseMultiTouch(true);
         app.getGuiNode().addControl(screen);
-        app.getInputManager().setSimulateMouse(true);
         startMenu = new Window(screen, "MainWindow", new Vector2f(15f, 15f));
         startMenu.setWindowTitle("Main Windows");
         startMenu.setMinDimensions(new Vector2f(130, 100));
@@ -59,27 +60,27 @@ public class GUIManager extends AbstractAppState {
         // create buttons
         ButtonAdapter chaseButton = new ButtonAdapter( screen, "ChaseButton", new Vector2f(15, 15) ) {
          @Override
-           public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
+           public void onButtonMouseRightUp(MouseButtonEvent evt, boolean toggled) {
              chase = true;
-             startMenu.hideWindow();
              stateManager.attach(new SceneManager());
              stateManager.attach(new PlayerManager());
              stateManager.attach(new CameraManager());
              stateManager.attach(new InteractionManager());
              app.getInputManager().setCursorVisible(true);
+             startMenu.hideWindow();
              started = true;
             }  
           };
 
         ButtonAdapter arcadeButton = new ButtonAdapter( screen, "TopButton", new Vector2f(15, 15) ) {
          @Override
-           public void onButtonMouseLeftUp(MouseButtonEvent evt, boolean toggled) {
-             startMenu.hideWindow();
+           public void onButtonMouseRightUp(MouseButtonEvent evt, boolean toggled) {
              stateManager.attach(new PlayerManager());
              stateManager.attach(new SceneManager());
              stateManager.attach(new CameraManager());
              stateManager.attach(new InteractionManager());
              app.getInputManager().setCursorVisible(true);
+             startMenu.hideWindow();
              started = true;
             }  
           };

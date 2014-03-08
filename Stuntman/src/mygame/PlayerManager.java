@@ -31,10 +31,10 @@ public class PlayerManager extends AbstractAppState {
     this.assetManager = this.app.getAssetManager();
     this.stateManager = this.app.getStateManager();
     makeNewPlayer();
+    System.out.println("PlayerManager Attached");
     }
   
-  //Make the player CURRENTLY BUGGED TEXTURE
-  
+  //Make the player
   public void makeNewPlayer(){
     Player player = new Player();
     player.model = new Node();

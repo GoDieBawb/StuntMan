@@ -35,6 +35,7 @@ public class SceneManager extends AbstractAppState {
     
   @Override
   public void initialize(AppStateManager stateManager, Application app) {
+    System.out.println("Manager Attached");
     super.initialize(stateManager, app);
     this.app           = (SimpleApplication) app;
     this.rootNode      = this.app.getRootNode();
@@ -46,8 +47,8 @@ public class SceneManager extends AbstractAppState {
     rootNode.attachChild(wallNode);
     initMaterials();
     createFloor();
-    createRightWall();
-    createLeftWall();
+    //createRightWall();
+    //createLeftWall();
     }
   
   public void initMaterials(){
@@ -79,6 +80,7 @@ public class SceneManager extends AbstractAppState {
   //Create the wall on the right side
   
   public void createRightWall(){
+    System.out.println("Right Wall Created");
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
     Random texRand = new Random();
     int texSel = texRand.nextInt(4);
@@ -99,6 +101,7 @@ public class SceneManager extends AbstractAppState {
   //Create the wall on the left side
   
   public void createLeftWall(){
+    System.out.println("Left Wall Created");
     Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
     Random texRand = new Random();
     int texSel = texRand.nextInt(4);
@@ -119,6 +122,12 @@ public class SceneManager extends AbstractAppState {
   public void update(float tpf){
   Player player = stateManager.getState(PlayerManager.class).currentPlayer;
   if (!player.isDead){
+    
+    if(wallNode.getChildren().isEmpty()){
+      System.out.println("Bug Fixed!");
+      createLeftWall();
+      createRightWall();
+      }
       
     //Getting the walls and moving them past the car, simulating movement
       
@@ -147,6 +156,8 @@ public class SceneManager extends AbstractAppState {
           lastWall = true;
           }
         }
+
+
       
       //If greater than 120 remove the wall, allowing for new walls to be created
       if(distance > 120){

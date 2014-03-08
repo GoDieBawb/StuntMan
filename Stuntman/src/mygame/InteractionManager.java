@@ -31,6 +31,7 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     this.app           = (SimpleApplication) app;
     this.stateManager  = this.app.getStateManager();
     this.inputManager  = this.app.getInputManager();
+    System.out.println("InteractionManager Attached");
     setUpKeys();
     }
   
@@ -92,6 +93,10 @@ public class InteractionManager extends AbstractAppState implements ActionListen
     if(results.size() > 0){
     player.isDead = true;
     app.getRootNode().detachAllChildren();
+    stateManager.detach(stateManager.getState(CameraManager.class));
+    stateManager.detach(stateManager.getState(PlayerManager.class));
+    stateManager.detach(stateManager.getState(SceneManager.class));
+    stateManager.detach(stateManager.getState(InteractionManager.class));
     stateManager.attach(new GUIManager());
     System.out.println("you died");
     }
