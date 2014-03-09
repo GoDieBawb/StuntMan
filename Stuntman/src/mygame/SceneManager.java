@@ -93,7 +93,7 @@ public class SceneManager extends AbstractAppState {
     Texture tex = assetManager.loadTexture(key);
     mat.setTexture("ColorMap", tex);
     
-    //Create the Geometry
+    //Create the Geometry/
     Box a = new Box(5f, 5f, 50f);
     Geometry wall = new Geometry("Right Wall", a);
     wall.setMaterial(mat);
