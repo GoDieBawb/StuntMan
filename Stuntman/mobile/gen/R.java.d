@@ -1,4 +1,4 @@
-C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\gen\com\mycompany\mygame\R.java \
+C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\gen\com\Bawberts\stuntMan\R.java \
  : C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-hdpi\stunticon.png \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-hdpi\stunticon1.png \
@@ -12,6 +12,7 @@ C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-xhdpi\ic_lau
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-xhdpi\stunticon.png \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\drawable-xhdpi\stunticon1.png \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\layout\main.xml \
+C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\values\integers.xml \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\res\values\strings.xml \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\bin\res\drawable-hdpi\ic_launcher.png \
 C:\Users\Bob\Documents\GitHub\StuntMan\Stuntman\mobile\bin\res\drawable-hdpi\stunticon.png \
